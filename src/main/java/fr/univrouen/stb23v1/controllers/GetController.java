@@ -1,7 +1,9 @@
 package fr.univrouen.stb23v1.controllers;
 
+import fr.univrouen.stb23v1.model.HTML;
 import fr.univrouen.stb23v1.model.STB;
 import fr.univrouen.stb23v1.model.TestSTB;
+import jakarta.websocket.OnError;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,5 +31,12 @@ public class GetController {
     public @ResponseBody STB getXML() {
         STB stb = new STB(123,"Test STB","2023-04-01T14:22:33");
         return stb;
+    }
+
+    @GetMapping(value = "/help")
+    @ResponseBody
+    public String postSTB() {
+        HTML index = new HTML("help.html");
+        return index.loadFileHTML();
     }
 }
